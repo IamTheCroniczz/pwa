@@ -13,13 +13,21 @@ const URLS_TO_CACHE = [
 // Instala e salva no cache
 self.addEventListener("install", event => {
   event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(cache => cache.addAll(URLS_TO_CACHE))
-      .then(() => console.log("Cache concluído!"))
-      .catch(err => console.error("Erro ao adicionar ao cache:", err))
+    (async () => {
+      const cache = await caches.open(CACHE_NAME);
+      for (const url of URLS_TO_CACHE) {
+        try {
+          await cache.add(url);
+          console.log(`Cached ${url}`);
+        } catch(e) {
+          console.warn(`Falha ao cachear ${url}:`, e);
+        }
+      }
+    })()
   );
   self.skipWaiting();
 });
+
 
 // Ativa e limpa caches antigos
 self.addEventListener("activate", event => {
