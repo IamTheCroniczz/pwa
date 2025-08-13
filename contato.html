@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contato - Meu Site Clean</title>
+  <link rel="stylesheet" href="/assets/style.css">
+  <link rel="manifest" href="/manifest.json">
+</head>
+<body>
+  <header class="header">
+    <div class="logo">Meu Site</div>
+    <button id="menu-toggle" class="menu-toggle">&#9776;</button>
+  </header>
+
+  <aside id="drawer-menu" class="drawer-menu">
+    <nav>
+      <ul>
+        <li><a href="/index.html">Início</a></li>
+        <li><a href="/sobre.html">Sobre</a></li>
+        <li><a href="/servicos.html">Serviços</a></li>
+        <li><a href="/contato.html">Contato</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+    <section>
+      <h1>Contato</h1>
+      <p>Quer falar com a gente? Preencha o formulário abaixo ou envie um e-mail.</p>
+      <form>
+        <label for="nome">Nome:</label><br>
+        <input type="text" id="nome" name="nome" required><br><br>
+
+        <label for="email">E-mail:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="mensagem">Mensagem:</label><br>
+        <textarea id="mensagem" name="mensagem" rows="4" required></textarea><br><br>
+
+        <button type="submit" style="background:#ff0000;color:#fff;padding:0.5rem 1rem;border:none;border-radius:4px;cursor:pointer;">Enviar</button>
+      </form>
+    </section>
+  </main>
+
+  <script src="/scripts/script.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/service-worker.js')
+        .then(() => console.log('Service Worker registrado com sucesso!'))
+        .catch(err => console.log('Erro ao registrar SW:', err));
+    }
+  </script>
+</body>
+</html>

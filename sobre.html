@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sobre - Meu Site Clean</title>
+  <link rel="stylesheet" href="/assets/style.css">
+  <link rel="manifest" href="/manifest.json">
+</head>
+<body>
+  <header class="header">
+    <div class="logo">Meu Site</div>
+    <button id="menu-toggle" class="menu-toggle">&#9776;</button>
+  </header>
+
+  <aside id="drawer-menu" class="drawer-menu">
+    <nav>
+      <ul>
+        <li><a href="/index.html">Início</a></li>
+        <li><a href="/sobre.html">Sobre</a></li>
+        <li><a href="/servicos.html">Serviços</a></li>
+        <li><a href="/contato.html">Contato</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+    <section>
+      <h1>Sobre Nós</h1>
+      <p>Somos uma equipe dedicada a criar sites modernos, responsivos e com tecnologia PWA para uma experiência mobile perfeita.</p>
+      <p>Nosso objetivo é que o usuário tenha acesso ao site mesmo quando estiver offline.</p>
+    </section>
+  </main>
+ <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/service-worker.js')
+        .then(() => console.log('Service Worker registrado com sucesso!'))
+        .catch(err => console.log('Erro ao registrar SW:', err));
+    }
+  </script>
+  <script src="/scripts/script.js"></script>
+</body>
+</html>
