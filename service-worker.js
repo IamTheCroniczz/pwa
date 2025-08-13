@@ -1,12 +1,13 @@
 const CACHE_NAME = "site-clean-cache-v1";
 const URLS_TO_CACHE = [
-  "index.html",
-  "sobre.html",
-  "servicos.html",
-  "contato.html",
-  "offline.html",
-  "assets/style.css",
-  "scripts/script.js"
+  "/", // raiz do site
+  "/index.html",
+  "/sobre.html",
+  "/servicos.html",
+  "/contato.html",
+  "/offline.html",
+  "/assets/style.css",
+  "/scripts/script.js"
 ];
 
 // Instala e salva no cache
@@ -35,10 +36,8 @@ self.addEventListener("activate", event => {
 self.addEventListener("fetch", event => {
   event.respondWith(
     caches.match(event.request)
-      .then(response => {
-        // Retorna do cache ou busca da rede
-        return response || fetch(event.request)
-          .catch(() => caches.match("offline.html"));
-      })
+      .then(response => response || fetch(event.request)
+        .catch(() => caches.match("/offline.html"))
+      )
   );
 });
